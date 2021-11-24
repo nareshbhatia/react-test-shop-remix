@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'remix';
+import { NavLink } from 'remix';
 
 export const Navbar = () => {
   return (
@@ -8,14 +8,14 @@ export const Navbar = () => {
 
       <ul className="flex-1">
         <li>
-          <Link className="navbar__link" to="/">
+          <NavLink className="navbar__link" to="/">
             Home
-          </Link>
+          </NavLink>
         </li>
         <li>
-          <Link className="navbar__link" to="/orders">
+          <NavLink className="navbar__link" to="/orders">
             Orders
-          </Link>
+          </NavLink>
         </li>
       </ul>
     </nav>

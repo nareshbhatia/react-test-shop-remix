@@ -1,6 +1,6 @@
 # React Test Shop Using Remix
 
-- [Remix Docs](https://remix.run/docs)
+![Home Page](assets/screenshot-home.png)
 
 ## Development
 

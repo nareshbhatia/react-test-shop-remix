@@ -11,11 +11,12 @@ import {
 } from 'remix';
 import type { LinksFunction } from 'remix';
 
+// TODO: Replace with tailwind.css
 import globalStylesUrl from '~/styles/global.css';
 import cartViewStylesUrl from '~/components/CartView/CartView.css';
 import navbarStylesUrl from '~/components/Header/Navbar.css';
 import orderItemListStylesUrl from '~/components/OrderView/OrderItemList.css';
-import orderviewStylesUrl from '~/components/OrderView/OrderView.css';
+import orderViewStylesUrl from '~/components/OrderView/OrderView.css';
 import productViewStylesUrl from '~/components/ProductView/ProductView.css';
 
 /**
@@ -32,7 +33,7 @@ export let links: LinksFunction = () => {
     { rel: 'stylesheet', href: cartViewStylesUrl },
     { rel: 'stylesheet', href: navbarStylesUrl },
     { rel: 'stylesheet', href: orderItemListStylesUrl },
-    { rel: 'stylesheet', href: orderviewStylesUrl },
+    { rel: 'stylesheet', href: orderViewStylesUrl },
     { rel: 'stylesheet', href: productViewStylesUrl },
   ];
 };

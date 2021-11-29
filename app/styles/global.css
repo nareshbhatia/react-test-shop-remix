@@ -470,6 +470,10 @@ label {
 }
 
 input {
+  display: block;
+  width: 100%;
+  padding: var(--px-8);
+  font-size: var(--font-size-base);
   border-radius: var(--px-4);
   border: 1px solid var(--grey-300);
   transition: all 0.2s ease;

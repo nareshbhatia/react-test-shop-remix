@@ -17,8 +17,16 @@ export let loader: LoaderFunction = async () => {
   const resOrders = await fetch(`${API_URL}/orders`);
   const orders = await resOrders.json();
 
+  const sortedOrders = orders.sort((order1: Order, order2: Order) => {
+    const date1 = new Date(order1.createdAt);
+    const date2 = new Date(order2.createdAt);
+    if (date1 < date2) return 1;
+    if (date1 > date2) return -1;
+    return 0;
+  });
+
   let data: OrdersPageData = {
-    orders,
+    orders: sortedOrders,
   };
 
   return json(data);
@@ -32,7 +40,7 @@ export let meta: MetaFunction = () => {
 };
 
 export default function OrdersPage() {
-  let { orders } = useLoaderData<OrdersPageData>();
+  const { orders } = useLoaderData<OrdersPageData>();
 
   return (
     <ViewVerticalContainer>

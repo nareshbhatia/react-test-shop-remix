@@ -1,8 +1,7 @@
 import type { MetaFunction, LoaderFunction } from 'remix';
 import { useLoaderData, json } from 'remix';
 import {
-  CartView,
-  CatalogView,
+  CartSummary,
   Header,
   HorizontalContainer,
   ScrollingContainer,
@@ -11,20 +10,15 @@ import {
 import { Cart, Catalog } from '../models';
 import { API_URL } from '../utils';
 
-type HomePageData = {
-  catalog: Catalog;
+type CheckoutPageData = {
   cart: Cart;
 };
 
 export let loader: LoaderFunction = async () => {
-  const resCatalog = await fetch(`${API_URL}/catalog`);
-  const catalog = await resCatalog.json();
-
   const resCart = await fetch(`${API_URL}/cart`);
   const cart = await resCart.json();
 
-  let data: HomePageData = {
-    catalog,
+  let data: CheckoutPageData = {
     cart,
   };
 
@@ -38,18 +32,16 @@ export let meta: MetaFunction = () => {
   };
 };
 
-export default function HomePage() {
-  const { catalog, cart } = useLoaderData<HomePageData>();
+export default function CheckoutPage() {
+  let { cart } = useLoaderData<CheckoutPageData>();
 
   return (
     <ViewVerticalContainer>
       <Header />
       <HorizontalContainer className="min-h-0 container">
-        <ScrollingContainer className="flex-1 my-2">
-          <CatalogView catalog={catalog} />
-        </ScrollingContainer>
+        <ScrollingContainer className="flex-1 my-2">Form</ScrollingContainer>
         <ScrollingContainer className="paper border-paper ml-2 my-2 p-2 w-400">
-          <CartView cart={cart} />
+          <CartSummary cart={cart} />
         </ScrollingContainer>
       </HorizontalContainer>
     </ViewVerticalContainer>

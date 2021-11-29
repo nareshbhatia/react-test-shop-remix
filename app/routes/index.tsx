@@ -1,43 +1,31 @@
 import type { MetaFunction, LoaderFunction } from 'remix';
 import { useLoaderData, json } from 'remix';
-import { Header, ViewVerticalContainer } from '../components';
+import {
+  CartView,
+  CatalogView,
+  Header,
+  HorizontalContainer,
+  ScrollingContainer,
+  ViewVerticalContainer,
+} from '../components';
+import { Cart, Catalog } from '../models';
+import { API_URL } from '../utils';
 
-
-type IndexData = {
-  resources: Array<{ name: string; url: string }>;
-  demos: Array<{ name: string; to: string }>;
+type HomePageData = {
+  catalog: Catalog;
+  cart: Cart;
 };
 
-export let loader: LoaderFunction = () => {
-  let data: IndexData = {
-    resources: [
-      {
-        name: 'Remix Docs',
-        url: 'https://remix.run/docs',
-      },
-      {
-        name: 'React Router Docs',
-        url: 'https://reactrouter.com/docs',
-      },
-      {
-        name: 'Remix Discord',
-        url: 'https://discord.gg/VBePs6d',
-      },
-    ],
-    demos: [
-      {
-        to: 'demos/actions',
-        name: 'Actions',
-      },
-      {
-        to: 'demos/about',
-        name: 'Nested Routes, CSS loading/unloading',
-      },
-      {
-        to: 'demos/params',
-        name: 'URL Params and Error Boundaries',
-      },
-    ],
+export let loader: LoaderFunction = async () => {
+  const resCatalog = await fetch(`${API_URL}/catalog`);
+  const catalog = await resCatalog.json();
+
+  const resCart = await fetch(`${API_URL}/cart`);
+  const cart = await resCart.json();
+
+  let data: HomePageData = {
+    catalog,
+    cart,
   };
 
   return json(data);
@@ -51,12 +39,19 @@ export let meta: MetaFunction = () => {
 };
 
 export default function HomePage() {
-  let data = useLoaderData<IndexData>();
+  let data = useLoaderData<HomePageData>();
 
   return (
     <ViewVerticalContainer>
       <Header />
-      <h1>Home</h1>
+      <HorizontalContainer className="min-h-0 container">
+        <ScrollingContainer className="flex-1 my-2">
+          <CatalogView catalog={data.catalog} />
+        </ScrollingContainer>
+        <ScrollingContainer className="paper border-paper ml-2 my-2 p-2 w-400">
+          <CartView cart={data.cart} />
+        </ScrollingContainer>
+      </HorizontalContainer>
     </ViewVerticalContainer>
   );
 }

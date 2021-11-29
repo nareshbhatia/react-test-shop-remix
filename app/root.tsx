@@ -12,7 +12,9 @@ import {
 import type { LinksFunction } from 'remix';
 
 import globalStylesUrl from '~/styles/global.css';
+import cartViewStylesUrl from '~/components/CartView/CartView.css';
 import navbarStylesUrl from '~/components/Header/Navbar.css';
+import productViewStylesUrl from '~/components/ProductView/ProductView.css';
 
 /**
  * The `links` export is a function that returns an array of objects that map to
@@ -25,7 +27,9 @@ import navbarStylesUrl from '~/components/Header/Navbar.css';
 export let links: LinksFunction = () => {
   return [
     { rel: 'stylesheet', href: globalStylesUrl },
+    { rel: 'stylesheet', href: cartViewStylesUrl },
     { rel: 'stylesheet', href: navbarStylesUrl },
+    { rel: 'stylesheet', href: productViewStylesUrl },
   ];
 };
 

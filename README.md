@@ -2,9 +2,9 @@
 
 ![Home Page](assets/screenshot-home.png)
 
-## Development
+## Development Build
 
-React Test Shop makes API calls to and external server. First set up this server
+React Test Shop makes API calls to an external server. First set up this server
 by cloning the
 [React Test Shop Server](https://github.com/nareshbhatia/react-test-shop-server)
 repository and following the instructions there to start the API server on
@@ -18,7 +18,7 @@ yarn dev
 
 This starts your app in development mode, rebuilding assets on file changes.
 
-## Deployment
+## Production Build
 
 First, build your app for production:
 

@@ -17,7 +17,7 @@ export const ProductView = ({ product, onClick }: ProductViewProps) => {
       className="product paper border-paper items-center"
       onClick={() => onClick(id)}
     >
-      <img className="product__photo" src={photo} alt={name} />
+      <img className="product__photo" src={photo} alt={name} loading="lazy" />
       <div className="ml-4">
         <h3>{name}</h3>
         <p className="mt-0">{description}</p>

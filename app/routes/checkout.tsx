@@ -52,15 +52,7 @@ export let action: ActionFunction = async ({ request }) => {
     zip: yup.string().required(),
   });
 
-  const address = {
-    firstName: formData.get('firstName'),
-    lastName: formData.get('lastName'),
-    company: formData.get('company'),
-    address: formData.get('address'),
-    city: formData.get('city'),
-    state: formData.get('state'),
-    zip: formData.get('zip'),
-  };
+  const address = Object.fromEntries(await request.formData());
 
   try {
     await addressSchema.validate(address, { abortEarly: false });

@@ -4,11 +4,11 @@
 
 ## Development
 
-React Test Shop makes API calls to and external server. First set up this server by cloning the
+React Test Shop makes API calls to and external server. First set up this server
+by cloning the
 [React Test Shop Server](https://github.com/nareshbhatia/react-test-shop-server)
 repository and following the instructions there to start the API server on
 port 8080.
-
 
 Now run this project from another shell:
 
